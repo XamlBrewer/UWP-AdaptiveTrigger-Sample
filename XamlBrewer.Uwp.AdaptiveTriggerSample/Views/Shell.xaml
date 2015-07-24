@@ -8,7 +8,7 @@
 
     <Page.Resources>
         <SolidColorBrush x:Key="JustOneShadeOfGray"
-                         Color="LightSlateGray" />
+                         Color="CadetBlue" />
     </Page.Resources>
 
     <Page.DataContext>

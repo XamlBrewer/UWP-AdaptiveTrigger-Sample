@@ -116,6 +116,9 @@
     <None Include="XamlBrewer.Uwp.AdaptiveTriggerSample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Medusa.png" />
+    <Content Include="Assets\Minotaur.png" />
+    <Content Include="Assets\Werewolf.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />

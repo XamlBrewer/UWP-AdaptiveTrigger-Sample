@@ -6,13 +6,40 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!-- Just here to check the splitview pane overlay -->
-        <Button Background="Silver"
-                Foreground="White"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Height="120"
-                Width="120" />
-    </Grid>
+    <RelativePanel Background="Thistle"
+                   Padding="8">
+        <Image x:Name="Illustration"
+               Source="ms-appx:///Assets/Medusa.png"
+               MaxWidth="400"
+               Margin="0 0 8 0" />
+        <TextBlock x:Name="Title"
+                   Text="Medusa"
+                   FontSize="48"
+                   RelativePanel.RightOf="Illustration"
+                   RelativePanel.AlignTopWith="Illustration" />
+        <TextBlock x:Name="Description"
+                   TextWrapping="WrapWholeWords"
+                   RelativePanel.Below="Links"
+                   RelativePanel.AlignLeftWith="Title">
+                  <Run Text="qsdf qsdfq sqdeszrtgfaze azreta ezrtzert aerzt ertygezrty ezr taezr tezrt ezrt zertezrt ezrt zert ezrt zer tezr tez rtze rtezr taezr t ezrt ezsr tzer tezrt ezrt ezrtaezr taz rta  zer az erdf qsdf q"
+                       FontSize="24" />
+        </TextBlock>
+        <RelativePanel x:Name="Links"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True">
+            <Image x:Name="PreviousImage"
+                   Source="ms-appx:///Assets/Werewolf.png"
+                   MaxWidth="100" />
+            <TextBlock Text="&lt;- Werewolf"
+                       RelativePanel.Below="PreviousImage"
+                       RelativePanel.AlignLeftWith="PreviousImage" />
+            <Image x:Name="NextImage"
+                   Source="ms-appx:///Assets/Minotaur.png"
+                   MaxWidth="100"
+                   RelativePanel.RightOf="PreviousImage" />
+            <TextBlock Text="Minotaur -&gt;"
+                       RelativePanel.Below="NextImage"
+                       RelativePanel.AlignRightWith="NextImage" />
+        </RelativePanel>
+    </RelativePanel>
 </Page>
