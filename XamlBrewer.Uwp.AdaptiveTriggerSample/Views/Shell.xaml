@@ -79,7 +79,7 @@
                             </Canvas>
                             <Grid Width="200"
                                   Height="80">
-                                <TextBlock Foreground="OrangeRed"
+                                <TextBlock Foreground="Coral"
                                            FontSize="24"
                                            FontWeight="SemiBold"
                                            VerticalAlignment="Bottom"
