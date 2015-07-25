@@ -101,10 +101,29 @@
                     <VisualState.Setters>
                         <!-- For intermediate window widths as well as most phones on landscape orientation, 
                         this state keeps primary layout narrow while showing the splitview pane to take advantage of more available width than narrow layout -->
+                        <Setter Target="LinksPanel.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="Illustration.MaxWidth"
+                                Value="300" />
+                        <Setter Target="Title.(RelativePanel.AlignLeftWith)"
+                                Value="Illustration" />
+                        <Setter Target="Title.(RelativePanel.AlignBottomWith)"
+                                Value="Illustration" />
+                        <Setter Target="Title.(RelativePanel.RightOf)"
+                                Value="" />
+                        <Setter Target="Title.(RelativePanel.AlignTopWith)"
+                                Value="" />
+                        <Setter Target="Title.FontSize"
+                                Value="36" />
+                        <Setter Target="Title.Padding"
+                                Value="4" />
+                        <Setter Target="Description.(RelativePanel.Below)"
+                                Value="Illustration" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
                     <!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
+                    <!-- States need to match -->
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
@@ -113,6 +132,20 @@
                         and adds dynamic RelativePanel constraints that puts all elements stacked below each other -->
                         <Setter Target="LinksPanel.Visibility"
                                 Value="Collapsed" />
+                        <Setter Target="Title.(RelativePanel.AlignLeftWith)"
+                                Value="Illustration" />
+                        <Setter Target="Title.(RelativePanel.AlignBottomWith)"
+                                Value="Illustration" />
+                        <Setter Target="Title.(RelativePanel.RightOf)"
+                                Value="" />
+                        <Setter Target="Title.(RelativePanel.AlignTopWith)"
+                                Value="" />
+                        <Setter Target="Title.FontSize"
+                                Value="36" />
+                        <Setter Target="Title.Padding"
+                                Value="4" />
+                        <Setter Target="Description.(RelativePanel.Below)"
+                                Value="Illustration" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
