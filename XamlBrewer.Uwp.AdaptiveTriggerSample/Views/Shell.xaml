@@ -145,98 +145,68 @@
         <!-- Responsive Visual States -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
+
+                <!-- Wide -->
+                <!-- VisualState to be triggered when window width is >=900 effective pixels -->
                 <VisualState>
-                    <!-- VisualState to be triggered when window width is >=900 effective pixels -->
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Widest possible layout moves some elements around to optimize for more available width 
-                        and keeps SplitView pane always showing inline -->
+                        <!-- Keep SplitView pane always showing inline -->
+                        <!-- Hide the Hamburger, it's useless here -->
                         <Setter Target="MySplitView.DisplayMode"
                                 Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen"
                                 Value="True" />
                         <Setter Target="HamburgerButton.Visibility"
                                 Value="Collapsed" />
-                        <!--<Setter Target="BackgroundCombo.(RelativePanel.RightOf)"
-                                Value="BackgroundImage" />
-                        <Setter Target="BackgroundCombo.(RelativePanel.AlignTopWith)"
-                                Value="BackgroundImage" />
-                        <Setter Target="BackgroundCombo.(RelativePanel.AlignLeftWith)"
-                                Value="FitCombo" />
-                        <Setter Target="PictureLabel.(RelativePanel.Below)"
-                                Value="BackgroundImage" />
-                        <Setter Target="FitCombo.(RelativePanel.RightOf)"
-                                Value="PicturesPanel" />
-                        <Setter Target="FitCombo.(RelativePanel.AlignTopWith)"
-                                Value="PictureLabel" />-->
                     </VisualState.Setters>
                 </VisualState>
+
+                <!-- Square -->
+                <!-- VisualState to be triggered when window width is >=720 effective pixels -->
                 <VisualState>
-                    <!-- VisualState to be triggered when window width is >=720 effective pixels -->
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Wide layout moves some elements around to optimize for more available width 
-                        and SplitView pane always showing as overlay -->
+                        <!-- SplitView pane shows as overlay -->
+                        <!-- Splitview pane will close however :-( -->
                         <Setter Target="MySplitView.DisplayMode"
                                 Value="Overlay" />
                         <Setter Target="MySplitView.IsPaneOpen"
                                 Value="True" />
-                        <!--<Setter Target="BackgroundCombo.(RelativePanel.RightOf)"
-                                Value="BackgroundImage" />
-                        <Setter Target="BackgroundCombo.(RelativePanel.AlignTopWith)"
-                                Value="BackgroundImage" />
-                        <Setter Target="BackgroundCombo.(RelativePanel.AlignLeftWith)"
-                                Value="FitCombo" />
-                        <Setter Target="PictureLabel.(RelativePanel.Below)"
-                                Value="BackgroundImage" />
-                        <Setter Target="FitCombo.(RelativePanel.RightOf)"
-                                Value="PicturesPanel" />
-                        <Setter Target="FitCombo.(RelativePanel.AlignTopWith)"
-                                Value="PictureLabel" />-->
                     </VisualState.Setters>
                 </VisualState>
+                
+                <!-- Narrow -->
+                <!-- VisualState to be triggered when window width is >=548 and <720 effective pixels -->
                 <VisualState>
-                    <!-- VisualState to be triggered when window width is >=548 and <720 effective pixels -->
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="548" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- For intermediate window widths as well as most phones on landscape orientation, 
-                        this state keeps primary layout narrow while showing the splitview pane to take advantage of more available width than narrow layout -->
+                        <!-- For intermediate window widths as well as most phones on landscape orientation -->
+                        <!-- Splitview goes to compact mode - there's not builtin animation for this -->
                         <Setter Target="MySplitView.DisplayMode"
                                 Value="CompactInline" />
                         <Setter Target="MySplitView.IsPaneOpen"
                                 Value="False" />
-                        <!--<Setter Target="BackgroundCombo.(RelativePanel.Below)"
-                                Value="BackgroundImage" />
-                        <Setter Target="PictureLabel.(RelativePanel.Below)"
-                                Value="BackgroundCombo" />
-                        <Setter Target="FitCombo.(RelativePanel.Below)"
-                                Value="BrowseButton" />-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
+                    <!-- Snapped -->
                     <!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- For the most narrow windows and phones in portrait orientation, this state collapses the SplitView pane into overlay mode
-                        and adds dynamic RelativePanel constraints that puts all elements stacked below each other -->
+                        <!-- Collapse the SplitView pane into overlay mode -->
                         <Setter Target="MySplitView.DisplayMode"
                                 Value="Overlay" />
                         <Setter Target="MySplitView.IsPaneOpen"
                                 Value="False" />
-                        <!--<Setter Target="BackgroundCombo.(RelativePanel.Below)"
-                                Value="BackgroundImage" />
-                        <Setter Target="PictureLabel.(RelativePanel.Below)"
-                                Value="BackgroundCombo" />
-                        <Setter Target="FitCombo.(RelativePanel.Below)"
-                                Value="BrowseButton" />-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

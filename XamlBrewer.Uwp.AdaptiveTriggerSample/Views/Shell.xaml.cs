@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using XamlBrewer.Uwp.AdaptiveTriggerSample.ViewModels;
 
 namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
@@ -23,18 +12,20 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
         {
             this.InitializeComponent();
 
-            // Navigate to the first page (optionally)
+            // Navigate to the first page.
             var type = (DataContext as ShellViewModel).Menu.First().NavigationDestination;
             SplitViewFrame.Navigate(type);
 
             this.SizeChanged += Shell_SizeChanged;
         }
 
+        // Update width indicator at bottom right of the screen.
         private void Shell_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             WidthIndicator.Text = "<- " + e.NewSize.Width.ToString() + " ->";
         }
 
+        // Navigate to another page.
         private void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -51,6 +42,7 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
             }
         }
 
+        // Swipe to open the splitview panel.
         private void SplitViewOpener_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             if (e.Cumulative.Translation.X > 50)
@@ -59,6 +51,7 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
             }
         }
 
+        // Swipe to close the splitview panel.
         private void SplitViewPane_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             if (e.Cumulative.Translation.X < -50)
@@ -67,6 +60,7 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
             }
         }
 
+        // Open or close the splitview panel through Hamburger button.
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
