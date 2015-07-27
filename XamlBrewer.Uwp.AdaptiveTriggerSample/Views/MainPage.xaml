@@ -8,10 +8,14 @@
 
     <RelativePanel Background="Thistle"
                    Padding="8">
+
+        <!-- Image -->
         <Image x:Name="Illustration"
                Source="ms-appx:///Assets/Medusa.png"
                MaxWidth="400"
                Margin="0 0 8 8" />
+
+        <!-- Description -->
         <ScrollViewer x:Name="Description"
                       RelativePanel.Below="LinksPanel"
                       RelativePanel.AlignLeftWith="Title"
@@ -26,6 +30,8 @@
                        Foreground="DimGray" />
             </TextBlock>
         </ScrollViewer>
+
+        <!-- Links -->
         <RelativePanel x:Name="LinksPanel"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignTopWithPanel="True">
@@ -54,6 +60,8 @@
                      Text="" />
             </TextBlock>
         </RelativePanel>
+
+        <!-- Title -->
         <TextBlock x:Name="Title"
                    Text="Medusa"
                    FontSize="48"
@@ -64,20 +72,18 @@
         <!-- Responsive Visual States -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <!-- Wide -->
-                <VisualState>
+                <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                 </VisualState>
 
-                <!-- Square -->
-                <VisualState>
+                <VisualState x:Name="Square">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Move the panel with the links from top right to botto left, to make extra space for description. -->
+                        <!-- Move the panel with the links from top right to bottom left, to make extra space for description. -->
                         <Setter Target="LinksPanel.(RelativePanel.Below)"
                                 Value="Illustration" />
                         <Setter Target="LinksPanel.(RelativePanel.AlignRightWithPanel)"
@@ -87,17 +93,25 @@
                         <Setter Target="Description.(RelativePanel.Below)"
                                 Value="Title" />
                     </VisualState.Setters>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.MaxWidth)"
+                                         Storyboard.TargetName="Illustration"
+                                         Duration="0:0:0.5"
+                                         To="400"
+                                         EnableDependentAnimation="True" />
+                    </Storyboard>
                 </VisualState>
 
-                <!-- Narrow -->
-                <VisualState>
+                <VisualState x:Name="Narrow">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="548" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!-- Make illustration smaller, place title in it, and description at the bottom. -->
-                        <Setter Target="Illustration.MaxWidth"
-                                Value="300" />
+                        <!--<Setter Target="Illustration.MaxWidth"
+                                Value="300" />-->
+                        <Setter Target="Illustration.Margin"
+                                Value="0" />
                         <Setter Target="Title.(RelativePanel.AlignLeftWith)"
                                 Value="Illustration" />
                         <Setter Target="Title.(RelativePanel.AlignBottomWith)"
@@ -113,15 +127,32 @@
                         <Setter Target="Description.(RelativePanel.Below)"
                                 Value="Illustration" />
                     </VisualState.Setters>
+                    <Storyboard>
+                        <!-- The original from Blend -->
+                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MaxWidth)"
+                                                       Storyboard.TargetName="Illustration">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>300</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>-->
+                        <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.MaxWidth)"
+                                         Storyboard.TargetName="Illustration"
+                                         Duration="0:0:0.5"
+                                         To="300"
+                                         EnableDependentAnimation="True" />
+                    </Storyboard>
                 </VisualState>
-                
-                <!-- Snapped -->
-                <VisualState>
+
+                <VisualState x:Name="Snapped">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Narrow state, with hidden links panel. -->
+                        <!-- Like Narrow state, but with hidden links panel. -->
+                        <Setter Target="Illustration.Margin"
+                                Value="0" />
                         <Setter Target="LinksPanel.Visibility"
                                 Value="Collapsed" />
                         <Setter Target="Title.(RelativePanel.AlignLeftWith)"
@@ -139,6 +170,13 @@
                         <Setter Target="Description.(RelativePanel.Below)"
                                 Value="Illustration" />
                     </VisualState.Setters>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.MaxWidth)"
+                                         Storyboard.TargetName="Illustration"
+                                         Duration="0:0:0.5"
+                                         To="400"
+                                         EnableDependentAnimation="True" />
+                    </Storyboard>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>

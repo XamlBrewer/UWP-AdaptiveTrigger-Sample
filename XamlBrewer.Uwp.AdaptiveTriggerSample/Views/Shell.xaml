@@ -146,9 +146,8 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 
-                <!-- Wide -->
                 <!-- VisualState to be triggered when window width is >=900 effective pixels -->
-                <VisualState>
+                <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
@@ -164,9 +163,8 @@
                     </VisualState.Setters>
                 </VisualState>
 
-                <!-- Square -->
                 <!-- VisualState to be triggered when window width is >=720 effective pixels -->
-                <VisualState>
+                <VisualState x:Name="Square">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
@@ -180,9 +178,8 @@
                     </VisualState.Setters>
                 </VisualState>
                 
-                <!-- Narrow -->
                 <!-- VisualState to be triggered when window width is >=548 and <720 effective pixels -->
-                <VisualState>
+                <VisualState x:Name="Narrow">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="548" />
                     </VisualState.StateTriggers>
@@ -195,9 +192,9 @@
                                 Value="False" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState>
-                    <!-- Snapped -->
-                    <!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
+
+                <!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
+                <VisualState x:Name="Snapped">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
